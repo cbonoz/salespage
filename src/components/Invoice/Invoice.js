@@ -48,7 +48,7 @@ function Invoice({
   }, [])
 
   const amountString = `${formatMoney(total)} USD`
-  const ethString = rates && total/rates.USD
+  const ethString = rates && total*rates.MATIC
 
   return (
     <div className="invoice-box" ref={ref}>
@@ -143,7 +143,7 @@ function Invoice({
             <td>
               {/* {payId} */}
               {amountString}<br/>
-              {ethString?.toFixed(18)} ETH 
+              ~{ethString?.toFixed(4)} MATIC 
             </td>
           </tr>
 

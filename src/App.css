@@ -52,7 +52,8 @@
   padding-left: 10px;
   padding-right: 10px;
   margin-right: 10px;;
-  border: 1px solid gray;
+  border-top: 1px solid gray;
+  /* border-bottom: 1px solid gray; */
 }
 
 .page-logo {
@@ -93,6 +94,10 @@
 .standard-button {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.bold {
+  font-weight: bold;;
 }
 
 .pointer {

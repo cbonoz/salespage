@@ -6,12 +6,6 @@ import axios from "axios"
 //     "EUR": 1138.07
 // }
 export function getRates() {
-    const url = 'https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=BTC,USD,EUR'
+    const url = 'https://min-api.cryptocompare.com/data/price?fsym=USD&tsyms=BTC,ETH,EUR,MATIC'
     return axios.get(url)
-}
-
-const getConvertUSDToEth = async (amountUsd) => {
-    const res = await getRates()
-    const conversion = res.data.USD
-    return amountUsd / conversion
 }

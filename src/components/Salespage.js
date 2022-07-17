@@ -20,6 +20,7 @@ function Salespage({ account, provider }) {
   const [modifierText, setModifierText] = useState()
   const [activeItem, setActiveItem] = useState()
   const [showInvoice, setShowInvoice] = useState()
+  const [error, setError] = useState()
 
   const fetchData = async () => {
     console.log("fetch", pageId);
@@ -59,6 +60,7 @@ function Salespage({ account, provider }) {
   const { description, title, signerAddress, address: contractAddress } = data;
 
   const completePayment = async (itemsToPurchase, amountEth) => {
+    setError('')
     console.log('completePayment', amountEth)
     let nftResults = {};
     let res;
@@ -81,7 +83,8 @@ function Salespage({ account, provider }) {
       setResult(nftResults);
     } catch (e) {
       console.error("error checking out", e);
-      alert("Error completing salespage: " + JSON.stringify(e));
+      // alert("Error completing salespage: " + JSON.stringify(e));
+      setError(e.message || e.toString())
     } finally {
       setLoading(false);
     }
@@ -149,27 +152,31 @@ function Salespage({ account, provider }) {
         </Result>
       </div>}
     <Invoice paid={!!result} name={data.pageTitle} items={activeItems} pay={completePayment}/>
+    <br/>
+    <p className="float-right standard-button error-text">{error}</p>
   </div>
   }
 
-  return (
-    <div className="container boxed white">
-        <div className="centered">
-        <img src={data.storeLogo || salespageLogo} className='page-logo'/>
-        <h2 className="centered">{pageTitle}</h2>
-        <br/>
-    </div>
+  return (<>
+      <div className="centered">
+          <img src={data.storeLogo || salespageLogo} className='page-logo'/>
+          <h2 className="centered">{pageTitle}</h2>
+          <br/>
+      </div>
 
+
+    <div className="container boxed white">
       <Row>
-        <Col span={6}>
+        <Col span={8}>
+          <Card title="Your items">
           {noItems && <Empty description="No items in cart"/>}
           {activeItems.map((item, i) => {
             return <div className="itemrow">
-              {item.name} x{item.quantity}
-              <span className="float-right">
-                <Tooltip title="Add modifier to item">
+              {item.name}&nbsp;<Tooltip title="Add modifier to item">
                   <InfoCircleOutlined className="pointer" onClick={() => setActiveItem(item)}/>
                 </Tooltip>
+              <span className="float-right bold">
+              x{item.quantity}
               </span>
               {item.modifier && <span>
                 <br/>  
@@ -177,12 +184,13 @@ function Salespage({ account, provider }) {
               </span>}
             </div>
           })}
-
-          {!noItems && <div className="checkout-area">
-            <Button type="primary" onClick={() => setShowInvoice(true)}>Go to checkout</Button>
+            {!noItems && <div className="checkout-area">
+            <Button className="standard-button" type="primary" onClick={() => setShowInvoice(true)}>Go to checkout</Button>
           </div>}
+</Card>
+      
         </Col>
-      <Col span={18}>
+      <Col span={16}>
       {items.map((item, i) => {
         const imgUrl = item.imgUrl || "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png";
         return <Card
@@ -217,6 +225,7 @@ function Salespage({ account, provider }) {
           />
       </Modal>
     </div>
+  </>
   );
 }
 
