@@ -9,6 +9,10 @@ export const ipfsUrl = (cid, fileName) => {
   return url;
 };
 
+export const createItemString = (items) => {
+  return items.map(item => `${item.name}x${item.quantity || 1}`).join(', ')
+}
+
 export const salespageUrl = (cid) => `${window.location.origin}/page/${cid}`;
 
 export function capitalize(string) {

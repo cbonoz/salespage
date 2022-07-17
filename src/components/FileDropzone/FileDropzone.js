@@ -16,11 +16,13 @@ const thumb = {
   border: "1px solid #eaeaea",
   marginBottom: 8,
   marginRight: 8,
+  borderRadius: '5px',
   width: 400,
   textAlign: "left",
   height: 230,
   overflow: "hidden",
   padding: 4,
+  paddingTop: 8,
   boxSizing: "border-box",
 };
 
@@ -108,6 +110,8 @@ export function FileDropzone({ files, setFiles, updateInfo, info }) {
         <input {...getInputProps()} />
         <p>Drag 'n' drop some files here, or click to select files</p>
       </div>
+      <br/>
+      <h3>Items</h3>
       <aside style={thumbsContainer}>{thumbs}</aside>
     </section>
   );

@@ -1,3 +1,4 @@
+import { CheckCircleTwoTone } from "@ant-design/icons";
 import { Button, Tooltip, Modal, Input, Result } from "antd";
 import React, { useState, useMemo, useEffect } from "react";
 import logo from "../../assets/logo.png";
@@ -159,11 +160,16 @@ function Invoice({
                   type="primary"
                   size="large"
                   className="standard-button"
-                  onClick={() => pay(ethString)}
+                  onClick={() => pay(items, ethString)}
                 >
                   Pay with wallet
                 </Button>
               </span>}
+              {paid && <div>
+                <CheckCircleTwoTone twoToneColor="#00aa00" />
+                  &nbsp;
+                  Paid
+              </div>}
             </td>
 
             <td>Total: {amountString}</td>

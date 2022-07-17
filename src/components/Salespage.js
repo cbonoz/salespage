@@ -58,7 +58,7 @@ function Salespage({ account, provider }) {
 
   const { description, title, signerAddress, address: contractAddress } = data;
 
-  const completePayment = async (amountEth) => {
+  const completePayment = async (itemsToPurchase, amountEth) => {
     console.log('completePayment', amountEth)
     let nftResults = {};
     let res;
@@ -75,7 +75,7 @@ function Salespage({ account, provider }) {
       // );
       // nftResults["signatureNft"] = res.data;
       const url = nftResults["transaction_external_url"];
-      res = await completePurchase(provider, contractAddress, url || pageId, amountEth);
+      res = await completePurchase(provider, contractAddress, url || pageId, itemsToPurchase, amountEth);
       nftResults = { nftResults, ...res };
       console.log('result', nftResults)
       setResult(nftResults);

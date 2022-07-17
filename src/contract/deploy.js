@@ -1,4 +1,5 @@
 import { ethers } from "ethers";
+import { createItemString } from "../util";
 import { SALESPAGE_CONTRACT } from "./metadata";
 
 
@@ -32,7 +33,7 @@ export const validAddress = (addr) => {
   }
 };
 
-export const completePurchase = async (provider, contractAddress, items, amountEth) => {
+export const completePurchase = async (provider, contractAddress, pageId, items, amountEth) => {
   if (!contractAddress || !items) {
     return {};
   }
@@ -43,10 +44,10 @@ export const completePurchase = async (provider, contractAddress, items, amountE
     provider.getSigner()
   );
 
-  const itemString = items.join(',')
-  const value =  ethers.utils.parseEther(amountEth)
+  const itemString = createItemString(items)
+  const value =  ethers.utils.parseEther(amountEth.toString())
+  console.log('complete purchase', itemString, value, pageId, contractAddress, amountEth)
   const options = {value}
-  console.log('complete purchase', itemString, value, contractAddress, amountEth)
   const result = await salespageContract.completePurchase(itemString, options);
   return result;
 };
