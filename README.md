@@ -56,44 +56,22 @@ Define the following env variables
 
 `yarn; yarn start`
 
-Example simple checkout page already hosted on IPFS: http://localhost:3000/page/bafybeid67zzz5auzpc2botitsrp2lh2ybutnqkw3mej4s6dlrkthhmis5q
+<!-- Example simple checkout page already hosted on IPFS: http://localhost:3000/page/bafybeid67zzz5auzpc2botitsrp2lh2ybutnqkw3mej4s6dlrkthhmis5q -->
 
-<!--
-### Aqua / Fluence
-
-(WIP)
-For price oracle, regenerate aqua script file with `js` flag.
-
-<pre>
-npm i -g @fluencelabs/aqua-cli # install aqua cli
-cd `/aqua`
-aqua-cli -i aqua-scripts -o aqua-output --js
-</pre>
-
-ex: https://github.com/fluencelabs/examples/tree/ae3b23c99e5a23f7da99a22bf5a6877109ae7982/aqua-examples/ts-oracle
-
--->
 
 <!--
 Demo flow:
-1. Intro (compare with shopify)
-2. Assets (IPFS / filecoin)
+1. Intro (compare with toast)
+2. Assets (IPFS / filecoin / polygon)
 3. Upload (IPFS / filecoin)
-4. Generate CID with hosted content (IPFS / filecoin)
-5. QR Code for page.
-6. Preview page (fluence, ceramic)
-7. Show checkout modal (unlock).
-8. Music page
-9. Generate wallet to receive funds (pillar)
+4. Generate CID with hosted content (IPFS / filecoin / ceramic)
+7. Show salespage (ceramic / ipfs / polygon)
+8. Show NFT receipt (NFTport).
+9. History page of transactions.
+
 -->
 
 ### Enhancements
-
-- Integrate payments and checkout flows directly from the catalog (enabling the product to be used table side). Currently this is using a fixed Unlock.js modal.
-- Add support for physical address collection for physical or remote item purchase.
-- Email integration via fluence backend.
-- IPNS publishing and fully custom domains.
-- App prototype currently demoed on rinkeby, additional testing and implementation will be required for mainnet usage.
 
 ## Screenshots
 
@@ -120,14 +98,6 @@ Demo flow:
 ### Basic storefront
 
 <img src="./img/store.png" width="800"/>
-
-### Music-resell storefront
-
-<img src="./img/music.png" width="800"/>
-
-### Verifying wallet
-
-<img src="./img/pillar.png" width="800"/>
 
 
 ### Useful links
