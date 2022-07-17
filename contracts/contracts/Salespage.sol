@@ -28,7 +28,7 @@ contract Salespage is Ownable {
         return isOpen;
     }
 
-    function setpaymentAddress(address _paymentAddress) public onlyOwner returns (address) {
+    function setPaymentAddress(address _paymentAddress) public onlyOwner returns (address) {
         paymentAddress = _paymentAddress;
         return paymentAddress;
     }
