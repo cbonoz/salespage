@@ -7,27 +7,31 @@
 
 ## Salespage 
 
-A Point of Sale platform built on Polygon and IPFS
+A Point of Sale platform built on Polygon and IPFS.
 
-Prototype built for the HackFS 2022 hackathon.
+Inspired by platforms such as Square, Clover, and Toast - Salespage creates a Point of Sale (POS) management platform built on Polygon smart contracts to enable merchants of any size to create their own in-store purchase pages.
 
-### TODO
-Add architecture diagram (showing different tech and app flow).
-NFT mint post payment.
-Manage existing salespages.
+Every purchase gets emitted as a smart contract event and transactions are generated as NFTs with receipts that can presented in store as proof of purchase.
 
-### Inspiration
+<!-- Live demo: -->
 
-Pain points:
 
-- Many of these existing providers don't integrate cryptocurrency.
-- Providers aren't distributed and suffer downsides of existing centralized platforms (vendor lock in, variable pricing, outages, credit card fees).
-- History entrusted to a centralized authority vs. blockchain used a decentralized permanent record-keeping system of transactions.
+## Pain points:
+
+- Many of these existing providers don't integrate cryptocurrency as payment methods.
+- Existing Providers aren't distributed and suffer downsides of existing centralized platforms (vendor lock in, variable pricing, outages, credit card fees).
+- Existing providers often have monthly fees regardless of usage.
+- Often transaction history entrusted to a centralized authority vs. blockchain used a decentralized permanent record-keeping system of transactions.
+
+
+### Architecture Diagram
+
+<img src="./img/diagram.png" width=600/>
 
 ### Features
 
-- Upload images and descriptions for the live page. Metadata for each page is delivered via a Ceramic stream.
-- Show sharable product pages hosted on IPFS.
+- Upload images and descriptions for the live page. Metadata for each page is delivered via a Ceramic stream and is hosted without fees for the end user.
+- Show sharable product pages and images hosted on IPFS using distributed delivery and hosting.
 - Integrated pricing and checkout using Unlock protocol (other payment integrations could also be added).
 - Create a new wallet to support payments to help new businesses adopt and receive cryptocurrency payments.
 - IPFS powered storage and transaction record keeping.
@@ -39,9 +43,8 @@ Pain points:
 - Polygon: Smart contract 'Salespage' representing a unique store front.
 - Ceramic: Used for storefront metadata storage and retrieval using streams (community node: https://developers.ceramic.network/run/nodes/community-nodes/). When a product page is accessed, a ceramic stream with the streamId of the page cid is opened and the metadata is rendered with the products from IPFS.
 - NFTPort: NFT receipt after purchase.
-- Covalent: Transaction history against a given salespage.
-
-<!-- - Fluence: Price oracle interaction for rendering real time USD quotes on checkout pages based on latest Eth price. Fluence enables doing this without a deployed smart contract or other oracle. Custom checkout pages would also be generated via an IPNS call. -->
+- Covalent: Transaction history against each Salespage. Query the events and transaction receipts generated on a contract url.
+- Spheron: Application hosting for both the business and customer.
 
 ### How to run
 
