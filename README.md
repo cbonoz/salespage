@@ -1,7 +1,8 @@
 
 <br/>
+<br/>
 <p align='center'>
-    <img src='./img/logo.png' width=600/>
+    <img src='./img/logo.png' width=400/>
 </p>
 <br/>
 
@@ -24,10 +25,6 @@ Every purchase gets emitted as a smart contract event and transactions are gener
 - Often transaction history entrusted to a centralized authority vs. blockchain used a decentralized permanent record-keeping system of transactions.
 
 
-### Architecture Diagram
-
-<img src="./img/diagram.png" width=600/>
-
 ### Features
 
 - Upload images and descriptions for the live page. Metadata for each page is delivered via a Ceramic stream and is hosted without fees for the end user.
@@ -39,12 +36,19 @@ Every purchase gets emitted as a smart contract event and transactions are gener
 
 ### Technologies used
 
-- IPFS and Protocol labs (Hosting and sharing of assets): IPFS and Filecoin are the primary drivers making CheckoutFS possible. Using web3.storage, a storefront or product page creator can host a distributed menu or catalog of items available for purchase with cryptocurrency.
+- IPFS/Filecoin (Hosting and sharing of assets): IPFS and Filecoin are the primary drivers making Salespage possible. Using web3.storage, a storefront or product page creator can host a distributed menu or catalog of items available for purchase with cryptocurrency.
 - Polygon: Smart contract 'Salespage' representing a unique store front.
 - Ceramic: Used for storefront metadata storage and retrieval using streams (community node: https://developers.ceramic.network/run/nodes/community-nodes/). When a product page is accessed, a ceramic stream with the streamId of the page cid is opened and the metadata is rendered with the products from IPFS.
 - NFTPort: NFT receipt after purchase.
 - Covalent: Transaction history against each Salespage. Query the events and transaction receipts generated on a contract url.
 - Spheron: Application hosting for both the business and customer.
+
+### Architecture Diagram
+
+<p align='center'>
+    <img src="./img/diagram.png" width=600/>
+</p>
+
 
 ### How to run
 
