@@ -12,7 +12,7 @@ A Point of Sale platform built on Polygon and IPFS.
 
 Inspired by platforms such as Square, Clover, and Toast - Salespage creates a Point of Sale (POS) management platform built on Polygon smart contracts to enable merchants of any size to create their own in-store purchase pages.
 
-Every purchase gets emitted as a smart contract event and transactions are generated as NFTs with receipts that can presented in store as proof of purchase.
+Every purchase gets emitted as a smart contract event and transactions are generated as NFTs with receipts that can be presented in-store as proof of purchase.
 
 <!-- Live demo: -->
 
@@ -49,7 +49,6 @@ Every purchase gets emitted as a smart contract event and transactions are gener
     <img src="./img/diagram.png" width=600/>
 </p>
 
-
 ### How to run
 
 Define the following env variables
@@ -76,9 +75,10 @@ Demo flow:
 8. Show NFT receipt (NFTport).
 9. History page of transactions.
 
+### Enhancements
+
 -->
 
-### Enhancements
 
 ## Screenshots
 
@@ -86,32 +86,55 @@ Demo flow:
 
 <img src="./img/home.png" width="800"/>
 
-### Creating a new storefront
+### Creating a new point of sale page
 
-<img src="./img/step1.png" width="800"/>
+<img src="./img/create.png" width="800"/>
 
-### Upload complete
+### Uploading items
 
-<img src="./img/complete.png" width="800"/>
+<img src="./img/upload.png" width="800"/>
 
-### IPNS publish to publicize storefront uploads.
+### Assets hosting
 
-<img src="./img/ipns_generation.png" width="800"/>
+<img src="./img/ifps.png" width="800"/>
 
-### Creating shortcut or scannable link
+### Salespage created
 
-<img src="./img/qr.png" width="800"/>
+<img src="./img/created.png" width="800"/>
+
 
 ### Basic storefront
 
-<img src="./img/store.png" width="800"/>
+<img src="./img/menu.png" width="800"/>
 
+### Modifying an item during purchase
+
+<img src="./img/modify.png" width="800"/>
+
+### Completing payment
+
+<img src="./img/pay.png" width="800"/>
+
+### Every Salespage gets deployed as its own auditable smart contract
+
+<img src="./img/purchase.png" width="800"/>
+
+### Viewing NFT receipt
+
+<img src="./img/receipt.png" width="800"/>
+
+
+
+### Viewing transaction history of a store (inbound and outbound)
+
+<img src="./img/history.png" width="800"/>
+
+<!--
 
 ### Useful links
 * https://ethglobal.com/events/hackfs2022/home
 * https://ethglobal.com/events/hackfs2022/prizes
 
-<!--
 ### Other links
 * https://www.notion.so/Prizes-HackFS-d2aeebcda5694c7a9c06dc7aa2b7a2d8
 * https://www.qr-code-generator.com/qr-code-api/?target=api-ad
