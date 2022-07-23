@@ -90,8 +90,8 @@ function App() {
             {!account && <span>
               <Button type="primary" onClick={() => login(false)}  loading={loading} disabled={loading}>{CONNECT_PROMPT}</Button>
             </span> }
-            {account && <span>
-              Hello: {abbreviate(account)}&nbsp;(<a href="#" onClick={e => {
+            {account && <span><b>
+              Hello: {abbreviate(account)}</b>&nbsp;(<a href="#" onClick={e => {
                 e.preventDefault()
                 logout()
               }}>logout</a>)</span>}

@@ -1,16 +1,16 @@
 import React from "react";
 import { Row, Col, Button } from "antd";
-import logo from "../assets/logo_3_2.png";
+import logo from "../assets/home2.png";
 import ReactRotatingText from "react-rotating-text";
 import { useNavigate } from "react-router-dom";
-import { APP_DESC, CONNECT_PROMPT } from "../util/constants";
+import { APP_DESC, APP_NAME, CONNECT_PROMPT } from "../util/constants";
 import { CheckCircleOutlined, CheckCircleTwoTone } from "@ant-design/icons";
 
 
 const CHECKLIST_ITEMS = [
-  "Free Point of Sale hosting on IPFS and Ceramic.",
-  "Completed salespages and transactions saved on Smart Contracts.",
-  "Customers check out via their mobile crypto wallets.",
+  "Create instant point of sale pages with no minimum fees.",
+  "Each page is managed by its own dedicated smart contract.",
+  "Every receipt generated as an NFT.",
 ];
 
 function Home({account}) {
@@ -29,7 +29,7 @@ function Home({account}) {
               <p>
                 {APP_DESC} for&nbsp;
                 <ReactRotatingText
-                  items={["businesses", "individuals", "everyone"]}
+                  items={["businesses", "restaurants", "retail"]}
                 />
                 .
               </p>
@@ -52,7 +52,10 @@ function Home({account}) {
           </div>
         </Col>
         <Col span={12}>
+          <div className="centered">
           <img src={logo} className="hero-image" />
+          <p><i>An example checkout page dynamically created by {APP_NAME}.</i></p>
+        </div>
         </Col>
       </Row>
     </div>

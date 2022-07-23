@@ -142,7 +142,7 @@ function CreateSalespage({provider}) {
               placeholder="Name of the Salespage"
               value={data.title}
               prefix="Name: "
-              onChange={(e) => updateData("name", e.target.value)}
+              onChange={(e) => updateData("title", e.target.value)}
             />
             {/* <TextArea
               aria-label="Description"

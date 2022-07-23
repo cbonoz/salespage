@@ -81,7 +81,7 @@ function Salespage({ account, provider, login, logout }) {
         description,
         account,
       );
-      res["signatureNft"] = nftResults.data || {}
+      res["receipt"] = nftResults.data || {}
       console.log('result', res)
       setResult(res);
       logout()
@@ -145,14 +145,14 @@ function Salespage({ account, provider, login, logout }) {
           title="Transaction complete!" 
           subTitle="Present this page as proof of payment"
           extra={[
-            // <Button href={trans} type="primary" key="console">
-            //   View transaction
-            // </Button>
+            <Button href={getExplorerUrl(result?.hash, true)} type="primary" key="console">
+              View transaction
+            </Button>
           ]}
         >
 
           
-          {JSON.stringify(result)}
+          <p><b>Receipt NFT:</b> {JSON.stringify(result['receipt'], null, '\t')}</p>
         </Result>
       </div>}
     <Invoice 
@@ -161,7 +161,7 @@ function Salespage({ account, provider, login, logout }) {
         paymentAddress={paymentAddress}
     paid={!!result} name={data.pageTitle} items={activeItems} pay={completePayment}/>
     <br/>
-    <p className="centered standard-button error-text">Error completing purchase - {error}</p>
+    {error && <p className="centered standard-button error-text">Error completing purchase - {error}</p>}
   </div>
   }
 
