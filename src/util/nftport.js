@@ -13,6 +13,9 @@ export const createReceiptNft = async (
   ownerAddress,
   imageUrl
 ) => {
+  if (!NFT_PORT_KEY) {
+    return {}
+  }
   const params = {
     chain: "polygon",
     mint_to_address: ownerAddress,

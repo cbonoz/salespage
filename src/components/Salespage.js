@@ -10,6 +10,7 @@ import salespageLogo from '../assets/icon.png'
 import Meta from "antd/lib/card/Meta";
 import Invoice from "./Invoice/Invoice";
 import { loadStream } from "../util/ceramic";
+import { createReceiptNft } from "../util/nftport";
 
 function Salespage({ account, provider }) {
   const { pageId } = useParams(); // cid
@@ -69,13 +70,13 @@ function Salespage({ account, provider }) {
 
     try {
       //   https://docs.nftport.xyz/docs/nftport/b3A6MjE2NjM5MDM-easy-minting-w-url
-      // let res = await createReceiptNft(
-      //   title,
-      //   description,
-      //   signerAddress,
-      //   signatureData
-      // );
-      // nftResults["signatureNft"] = res.data;
+      let res = await createReceiptNft(
+        title,
+        description,
+        signerAddress,
+        signatureData
+      );
+      nftResults["signatureNft"] = res.data || {}
       const url = nftResults["transaction_external_url"];
       res = await completePurchase(provider, contractAddress, url || pageId, itemsToPurchase, amountEth);
       nftResults = { nftResults, ...res };
