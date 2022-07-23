@@ -73,8 +73,7 @@ function Salespage({ account, provider }) {
       let res = await createReceiptNft(
         title,
         description,
-        signerAddress,
-        signatureData
+        paymentAddress,
       );
       nftResults["signatureNft"] = res.data || {}
       const url = nftResults["transaction_external_url"];
