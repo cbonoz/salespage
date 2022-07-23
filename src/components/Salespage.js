@@ -119,7 +119,7 @@ function Salespage({ account, provider }) {
       })
 
     }
-    return DEMO_ITEMS
+    return []// DEMO_ITEMS
   }, [data]);
 
   if (loading) {
