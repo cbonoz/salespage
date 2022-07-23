@@ -3,28 +3,16 @@ import PropTypes from "prop-types";
 import { Button, Input, Select, Table } from "antd";
 import { ACTIVE_CHAIN, APP_NAME, CHAIN_OPTIONS } from "../util/constants";
 import { getTransactions } from "../util/covalent";
-import { capitalize, col } from "../util";
+import { capitalize, getHistoryColumns, HISTORY_COLUMNS} from "../util";
+
+import logo from '../assets/logo.png'
 
 const { Option } = Select;
 
-const COLUMNS = [
-  //   col("tx_hash"),
-  //   col("from_address"),
-  col("to_address"),
-  col("value"),
-  col("gas_spent"),
-  col(
-    "block_signed_at",
-    (row) =>
-      `${new Date(row).toLocaleDateString()} ${new Date(
-        row
-      ).toLocaleTimeString()}`
-  ),
-];
 
 function History(props) {
   const [address, setAddress] = useState(
-    "0x73bceb1cd57c711feac4224d062b0f6ff338501e"
+    "0xD7e02fB8A60E78071D69ded9Eb1b89E372EE2292"
   );
   const [chainId, setChainId] = useState(ACTIVE_CHAIN.id + "");
   const [loading, setLoading] = useState();
@@ -52,12 +40,20 @@ function History(props) {
     }
   };
 
+  const currentChain = CHAIN_OPTIONS[chainId];
+  const cols = getHistoryColumns(address);
+
   return (
     <div>
-      <p>
-        This page can be used to lookup {APP_NAME} transactions against a given
-        {ACTIVE_CHAIN.name} address.
-      </p>
+      <div align='center'>
+        <img className="history-logo" src={logo}/>
+        <p>
+          This page can be used to lookup {APP_NAME} transactions given a store owner address
+          on <b>{currentChain.name}</b>.
+        </p>
+        <br/>
+        <br/>
+      </div>
       <Input
         value={address}
         onChange={(e) => setAddress(e.target.value)}
@@ -88,15 +84,15 @@ function History(props) {
         <div>
           <h1>Transaction History</h1>
           <Table
-            dataSource={data}
-            columns={COLUMNS}
+            dataSource={data.filter(d => d.value > 0)}
+            columns={cols}
             className="pointer"
             onRow={(record, rowIndex) => {
               return {
                 onClick: (event) => {
                   console.log("event", event.target.value);
                   window.open(
-                    `${CHAIN_OPTIONS[chainId].url}tx/${record.tx_hash}`,
+                    `${currentChain.url}tx/${record.tx_hash}`,
                     "_blank"
                   );
                 }, // click row

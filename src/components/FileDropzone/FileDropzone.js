@@ -1,7 +1,7 @@
-import { Input } from "antd";
+import { Input, Empty} from "antd";
 import React, { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import { bytesToSize } from "../../util";
+import { bytesToSize, isEmpty } from "../../util";
 
 const thumbsContainer = {
   display: "flex",
@@ -104,6 +104,8 @@ export function FileDropzone({ files, setFiles, updateInfo, info }) {
     [files],
   );
 
+  const noFiles = isEmpty(files)
+
   return (
     <section>
       <div {...getRootProps({ className: "dropzone" })}>
@@ -111,7 +113,15 @@ export function FileDropzone({ files, setFiles, updateInfo, info }) {
         <p>Drag 'n' drop some files here, or click to select files</p>
       </div>
       <br/>
-      <h3>Items</h3>
+      {!noFiles && <h3>Items</h3>}
+      {noFiles && <div>
+        <Empty
+          image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
+          imageStyle={{
+            height: 60,
+          }}
+          description={<span><h4>No items!</h4>Get started by uploading an image of your first item.</span>}
+      /></div>}
       <aside style={thumbsContainer}>{thumbs}</aside>
     </section>
   );

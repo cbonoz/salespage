@@ -57,7 +57,7 @@ function Salespage({ account, provider }) {
     fetchData();
   }, [pageId]);
 
-  const { description, title, signerAddress, address: contractAddress } = data;
+  const { description, title, paymentAddress, address: contractAddress } = data;
 
   const completePayment = async (itemsToPurchase, amountEth) => {
     setError('')
@@ -129,7 +129,7 @@ function Salespage({ account, provider }) {
     );
   }
 
-  const pageTitle = data.title || `${APP_NAME} checkout`;
+  const pageTitle = title || `${APP_NAME} checkout`;
   const activeItems = Object.values(cartItems);
   const noItems = isEmpty(activeItems);
 
@@ -137,7 +137,7 @@ function Salespage({ account, provider }) {
     return <div className="container boxed white">
       {result && <div>
        <Result
-
+          status="success" 
           title="Transaction complete!" 
           subTitle="Present this page as proof of payment"
           extra={[
@@ -151,25 +151,35 @@ function Salespage({ account, provider }) {
           {JSON.stringify(result)}
         </Result>
       </div>}
-    <Invoice paid={!!result} name={data.pageTitle} items={activeItems} pay={completePayment}/>
+    <Invoice 
+        storeName={pageTitle}
+        address={account}
+        paymentAddress={paymentAddress}
+    paid={!!result} name={data.pageTitle} items={activeItems} pay={completePayment}/>
     <br/>
     <p className="float-right standard-button error-text">{error}</p>
   </div>
   }
 
   return (<>
-      <div className="centered">
+      <div className="centered salespage-header">
           <img src={data.storeLogo || salespageLogo} className='page-logo'/>
           <h2 className="centered">{pageTitle}</h2>
-          <br/>
+          <p>Purchase Page</p>
       </div>
 
 
     <div className="container boxed white">
       <Row>
-        <Col span={8}>
+        <Col span={7}>
           <Card title="Your items">
-          {noItems && <Empty description="No items in cart"/>}
+          {noItems && <Empty 
+          image="https://cdn-icons-png.flaticon.com/512/34/34627.png"
+          imageStyle={{
+            height: 60,
+          }}
+
+          description="No items in cart"/>}
           {activeItems.map((item, i) => {
             return <div className="itemrow">
               {item.name}&nbsp;<Tooltip title="Add modifier to item">
@@ -190,7 +200,7 @@ function Salespage({ account, provider }) {
 </Card>
       
         </Col>
-      <Col span={16}>
+      <Col span={17}>
       {items.map((item, i) => {
         const imgUrl = item.imgUrl || "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png";
         return <Card
@@ -198,6 +208,7 @@ function Salespage({ account, provider }) {
         // style={{ width: 300 }}
         cover={
           <img
+            className="item-card-image"
             alt={item.name}
             src={imgUrl}
           />

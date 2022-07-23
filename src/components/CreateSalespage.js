@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { Button, Input, Row, Col, Radio, Steps, Result } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 import { salespageUrl, ipfsUrl, getExplorerUrl } from "../util";
-import { APP_NAME, EXAMPLE_FORM } from "../util/constants";
+import { APP_NAME, EXAMPLE_FORM, SALESPAGE_DETAIL } from "../util/constants";
 import { storeFiles } from "../util/stor";
 import { deployContract, validAddress } from "../contract/deploy";
 import { FileDropzone } from "./FileDropzone/FileDropzone";
 import { createStream } from "../util/ceramic";
+import logo from '../assets/logo.png'
 
 const { Step } = Steps;
 
@@ -100,7 +101,11 @@ function CreateSalespage({provider}) {
       <Row>
         <Col span={24}>
         <div>
-          <h1 className="centered">Create Salespage</h1>
+          <div className="centered create-detail">
+            <img src={logo} className='create-logo'/>
+            <h1 className="centered">Create Salespage</h1>
+            <p>{SALESPAGE_DETAIL}</p>
+  </div>
           <br/>
           <br/>
             <Steps
@@ -148,7 +153,7 @@ function CreateSalespage({provider}) {
             /> */}
 
             {/* TODO: add configurable amount of items */}
-            <h3 className="vertical-margin">Upload images:</h3>
+            <h3 className="vertical-margin">Declare products:</h3>
             <FileDropzone
               info={data}
               updateInfo={updateData}

@@ -83,7 +83,7 @@ function App() {
                   Create salespage request
                 </Menu.Item>
                 <Menu.Item key={2} onClick={() => navigate("/history")}>
-                  Lookup
+                  View Transactions
                 </Menu.Item>
               </>
             )}
@@ -96,9 +96,9 @@ function App() {
                 logout()
               }}>logout</a>)</span>}
           &nbsp;
-          <span>
-            Network: {ACTIVE_CHAIN.name}
-          </span>
+          <Menu.Item>
+            <b>Network: {ACTIVE_CHAIN.name}</b>
+            </Menu.Item>
           </Menu>
         </Header>}
         <Content style={{ padding: "0 50px" }}>

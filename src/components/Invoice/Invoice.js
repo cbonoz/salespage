@@ -2,9 +2,9 @@ import { CheckCircleTwoTone } from "@ant-design/icons";
 import { Button, Tooltip, Modal, Input, Result } from "antd";
 import React, { useState, useMemo, useEffect } from "react";
 import logo from "../../assets/logo.png";
-import { formatMoney, getDateStringFromTimestamp } from "../../util";
+import { abbreviate, formatMoney, getDateStringFromTimestamp } from "../../util";
 import { getRates } from "../../util/coins";
-import { APP_NAME } from "../../util/constants";
+import { ACTIVE_CHAIN, APP_NAME } from "../../util/constants";
 
 import "./Invoice.css";
 
@@ -15,6 +15,9 @@ const DEMO_NUMBER =
 
 // github.com/sparksuite/simple-html-invoice-template
 function Invoice({
+  storeName,
+  address,
+  paymentAddress,
   paid,
   name,
   ref,
@@ -69,7 +72,7 @@ function Invoice({
                   </td>
 
                   <td>
-                    NFT Voucher #:&nbsp;
+                    Purchase #:&nbsp;
                     <Tooltip
                       placement="top"
                       title={<span>{invoiceNumber}</span>}
@@ -80,10 +83,6 @@ function Invoice({
                     Created:&nbsp;
                     {getDateStringFromTimestamp(createdAt || Date.now(), true)}
                     <br />
-                    Active Until:&nbsp;
-                    {getDateStringFromTimestamp(
-                      Date.now() + 30 * 24 * 60 * 60 * 1000
-                    )}
                   </td>
                 </tr>
               </table>
@@ -95,6 +94,7 @@ function Invoice({
               <table>
                 <tr>
                   <td>
+                    {storeName && <span>{storeName}<br/></span>}
                     Fulfilled by {APP_NAME}, Inc.
                     <br />
                     {name}
@@ -102,11 +102,8 @@ function Invoice({
                   </td>
 
                   <td>
-                    Acme Corp.
-                    <br />
-                    John Doe
-                    <br />
-                    {APP_NAME}@gmail.com
+                    Your account: {abbreviate(address)}<br/>
+                    Payable to: {abbreviate(paymentAddress)}
                   </td>
                 </tr>
               </table>
@@ -143,7 +140,7 @@ function Invoice({
             <td>
               {/* {payId} */}
               {amountString}<br/>
-              ~{ethString?.toFixed(4)} MATIC 
+              {ethString?.toFixed(4)} MATIC ({ACTIVE_CHAIN.name})
             </td>
           </tr>
 

@@ -16,7 +16,7 @@ export const createItemString = (items) => {
 export const salespageUrl = (cid) => `${window.location.origin}/page/${cid}`;
 
 export function capitalize(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+  return (string.charAt(0).toUpperCase() + string.slice(1)).replace('_', ' ')
 }
 
 export const abbreviate = s => s ? `${s.substr(0, 6)}**` : ''
@@ -45,6 +45,27 @@ export const col = (k, render) => ({
   key: k,
   render,
 });
+
+const WEI_PER_UNIT=Math.pow(10,18)
+
+export const getHistoryColumns = (currentAddress) => {
+  return [
+    col("type", (row, record, _) => {
+      console.log('rec', record)
+      return record['to_address']?.toLowerCase() === currentAddress?.toLowerCase() ? 'Inbound (Revenue)' : 'Outbound (Deduction)'
+    }),
+    col("tx_hash", (row) => abbreviate(row)),
+    col("from_address", (row) => abbreviate(row)),
+    col("value", row => row/WEI_PER_UNIT),
+    col("block_signed_at",
+      (row) =>
+        `${new Date(row).toLocaleDateString()} ${new Date(
+          row
+        ).toLocaleTimeString()}`
+    ),
+  ]
+};
+
 
 export function bytesToSize(bytes) {
   var sizes = ["Bytes", "KB", "MB", "GB", "TB"];

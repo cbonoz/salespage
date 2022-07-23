@@ -4,6 +4,7 @@ export const INFURA_ID = process.env.REACT_APP_SALESPAGE_INFURA_ID; //Infura ID
 
 export const APP_NAME = "Salespage";
 export const APP_DESC = "A Point of Sale platform built on Polygon and IPFS"
+export const SALESPAGE_DETAIL = "A Salespage is a gateway url you can have displayed on tablets or screens in your store or retail space. Customers will be able complete purchases from this page fully self-service."
 
 export const CONNECT_PROMPT = 'Connect Wallet'
 
