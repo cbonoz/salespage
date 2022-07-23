@@ -14,7 +14,7 @@ Inspired by platforms such as Square, Clover, and Toast - Salespage creates a Po
 
 Every purchase gets emitted as a smart contract event and transactions are generated as NFTs with receipts that can be presented in-store as proof of purchase.
 
-<!-- Live demo: <a href="" target="_blank"></a> -->
+<!-- Live demo: <a href="https://salespage-ekhr49.spheron.app/" target="_blank">https://salespage-ekhr49.spheron.app/</a> -->
 
 <!-- Video: <a href="" target="_blank"></a> -->
 

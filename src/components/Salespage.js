@@ -12,7 +12,7 @@ import Invoice from "./Invoice/Invoice";
 import { loadStream } from "../util/ceramic";
 import { createReceiptNft } from "../util/nftport";
 
-function Salespage({ account, provider }) {
+function Salespage({ account, provider, login, logout }) {
   const { pageId } = useParams(); // cid
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
@@ -62,6 +62,10 @@ function Salespage({ account, provider }) {
 
   const completePayment = async (itemsToPurchase, amountEth) => {
     setError('')
+    if (!provider || !account) {
+      return await login(false)
+    }
+
     console.log('completePayment', amountEth)
     let nftResults = {};
     let res;
@@ -70,17 +74,17 @@ function Salespage({ account, provider }) {
 
     try {
       //   https://docs.nftport.xyz/docs/nftport/b3A6MjE2NjM5MDM-easy-minting-w-url
-      let res = await createReceiptNft(
+
+      res = await completePurchase(provider, contractAddress, pageId, itemsToPurchase, amountEth);
+      nftResults = await createReceiptNft(
         title,
         description,
-        paymentAddress,
+        account,
       );
-      nftResults["signatureNft"] = res.data || {}
-      const url = nftResults["transaction_external_url"];
-      res = await completePurchase(provider, contractAddress, url || pageId, itemsToPurchase, amountEth);
-      nftResults = { nftResults, ...res };
-      console.log('result', nftResults)
-      setResult(nftResults);
+      res["signatureNft"] = nftResults.data || {}
+      console.log('result', res)
+      setResult(res);
+      logout()
     } catch (e) {
       console.error("error checking out", e);
       // alert("Error completing salespage: " + JSON.stringify(e));
@@ -157,7 +161,7 @@ function Salespage({ account, provider }) {
         paymentAddress={paymentAddress}
     paid={!!result} name={data.pageTitle} items={activeItems} pay={completePayment}/>
     <br/>
-    <p className="float-right standard-button error-text">{error}</p>
+    <p className="centered standard-button error-text">Error completing purchase - {error}</p>
   </div>
   }
 
@@ -165,9 +169,8 @@ function Salespage({ account, provider }) {
       <div className="centered salespage-header">
           <img src={data.storeLogo || salespageLogo} className='page-logo'/>
           <h2 className="centered">{pageTitle}</h2>
-          <p>Purchase Page</p>
+          <div>Purchase Page<br/>Add items to cart. Complete payment and get a proof of purchase receipt sent to your wallet.</div>
       </div>
-
 
     <div className="container boxed white">
       <Row>
@@ -178,8 +181,9 @@ function Salespage({ account, provider }) {
           imageStyle={{
             height: 60,
           }}
-
-          description="No items in cart"/>}
+          description="No items in cart">
+            Click an item on the right to get started!
+            </Empty>}
           {activeItems.map((item, i) => {
             return <div className="itemrow">
               {item.name}&nbsp;<Tooltip title="Add modifier to item">

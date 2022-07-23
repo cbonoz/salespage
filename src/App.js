@@ -105,7 +105,7 @@ function App() {
           <div className={`${!isCheckout ? "container" : ""}`}>
             <Routes>
               <Route path="/" element={<Home account={account} />} />
-              <Route path="/page/:pageId" element={<Salespage provider={provider} account={account} />} />
+              <Route path="/page/:pageId" element={<Salespage logout={logout} login={login} provider={provider} account={account} />} />
               <Route path="/create" element={<CreateSalespage provider={provider} account={account}/>} />
               <Route path="/history" element={<History />} />
             </Routes>

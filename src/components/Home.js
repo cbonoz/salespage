@@ -6,10 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { APP_DESC, CONNECT_PROMPT } from "../util/constants";
 import { CheckCircleOutlined, CheckCircleTwoTone } from "@ant-design/icons";
 
+
 const CHECKLIST_ITEMS = [
-  "Free Point of Sale hosting on IPFS and Ceramic",
-  "Completed salespages and transactions saved on Smart Contracts",
-  "No vendor agreements required",
+  "Free Point of Sale hosting on IPFS and Ceramic.",
+  "Completed salespages and transactions saved on Smart Contracts.",
+  "Customers check out via their mobile crypto wallets.",
 ];
 
 function Home({account}) {

@@ -19,7 +19,6 @@ function Invoice({
   address,
   paymentAddress,
   paid,
-  name,
   ref,
   createdAt,
   logoUrl,
@@ -94,10 +93,9 @@ function Invoice({
               <table>
                 <tr>
                   <td>
-                    {storeName && <span>{storeName}<br/></span>}
+                    {storeName && <span><b>{storeName}</b><br/></span>}
                     Fulfilled by {APP_NAME}, Inc.
                     <br />
-                    {name}
                     {/* 12345 Sunny Road */}
                   </td>
 
