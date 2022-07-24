@@ -40,12 +40,12 @@ Live demo: <a href="https://salespage-ekhr49.spheron.app/" target="_blank">https
 
 ### Technologies used
 
-- IPFS/Filecoin (Hosting and sharing of assets): IPFS and Filecoin are the primary drivers making Salespage possible. Using web3.storage, a storefront or product page creator can host a distributed menu or catalog of items available for purchase with cryptocurrency.
-- Polygon: Smart contract 'Salespage' representing a unique store front.
-- Ceramic: Used for storefront metadata storage and retrieval using streams (community node: https://developers.ceramic.network/run/nodes/community-nodes/). When a product page is accessed, a ceramic stream with the streamId of the page cid is opened and the metadata is rendered with the products from IPFS.
-- NFTPort: NFT receipt after purchase.
-- Covalent: Transaction history against each Salespage. Query the events and transaction receipts generated on a contract url.
-- Spheron: Application hosting for both the business and customer.
+- IPFS/Filecoin (Hosting and sharing of assets): IPFS and Filecoin are the primary drivers making Salespage possible. Using web3.storage, a storefront or product page creator can host a distributed restaurant menu. The images are pulled down every time a Point of Sale page is rendered on a device using IPFS addressing.
+- Polygon: Smart contract 'Salespage' (see contracts folder) representing a unique store front. Each deployed restaurant/retail page gets a distinct smart contract that emits an event whenever a customer completes a purchase.
+- Ceramic: Used for storefront metadata storage and retrieval using streams (community node: https://developers.ceramic.network/run/nodes/community-nodes/). When a product page is accessed, a ceramic stream with the streamId of the page cid is opened and the metadata is rendered with the products from IPFS. Ceramic is invoked when the Salespage contract is first deployed and when the data is retried on Point of sales page render.
+- NFTPort: After payment is completed on Polygon, NFTPort generates a receipt that contains information about the items purchased, the name of the merchant, and ties it to the payer's address.
+- Covalent: Transaction history against each Salespage. Query the events and transaction receipts generated on a contract url. Covalent enables a reporting system of merchant success (and failure) by aggregating customer purchase transactions and categorizing them by outbound (payable) or inbound (receivable).
+- Spheron: Hosted on IPFS and Arweav, spheron Application hosting for both the business and customer. App demo url available here: https://salespage-ekhr49.spheron.app/
 
 ### Architecture Diagram
 
