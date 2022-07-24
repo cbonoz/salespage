@@ -14,7 +14,7 @@ Inspired by platforms such as Square, Clover, and Toast - Salespage creates a Po
 
 Every purchase gets emitted as a smart contract event and transactions are generated as NFTs with receipts that can be presented in-store as proof of purchase.
 
-Live demo: <a href="https://salespage-ekhr49.spheron.app/" target="_blank">https://salespage-ekhr49.spheron.app/</a>
+Live demo: <a href="https://bafybeihtftsmqfgle5ldmyfv7pfihbvfmvy3lnrhbetb3aja7dcpyy6jda.ipfs.infura-ipfs.io/" target="_blank">here</a>
 
 <b>Note must be connected to Mumbai network for the demo url.</b>
 
@@ -45,7 +45,7 @@ Live demo: <a href="https://salespage-ekhr49.spheron.app/" target="_blank">https
 - Ceramic: Used for storefront metadata storage and retrieval using streams (community node: https://developers.ceramic.network/run/nodes/community-nodes/). When a product page is accessed, a ceramic stream with the streamId of the page cid is opened and the metadata is rendered with the products from IPFS. Ceramic is invoked when the Salespage contract is first deployed and when the data is retried on Point of sales page render.
 - NFTPort: After payment is completed on Polygon, NFTPort generates a receipt that contains information about the items purchased, the name of the merchant, and ties it to the payer's address.
 - Covalent: Transaction history against each Salespage. Query the events and transaction receipts generated on a contract url. Covalent enables a reporting system of merchant success (and failure) by aggregating customer purchase transactions and categorizing them by outbound (payable) or inbound (receivable).
-- Spheron: Hosted on IPFS and Arweav, spheron Application hosting for both the business and customer. App demo url available here: https://salespage-ekhr49.spheron.app/
+- Spheron: Hosted on IPFS and Pinata, used Spheron Application hosting for the user-facing app demo.
 
 ### Architecture Diagram
 
