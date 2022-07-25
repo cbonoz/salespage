@@ -13,7 +13,7 @@ export const createItemString = (items) => {
   return items.map(item => `${item.name}x${item.quantity || 1}`).join(', ')
 }
 
-export const salespageUrl = (cid) => `${window.location.origin}/page/${cid}`;
+export const salespageUrl = (cid) => `${window.location.origin}/#/page/${cid}`;
 
 export function capitalize(string) {
   return (string.charAt(0).toUpperCase() + string.slice(1)).replace('_', ' ')

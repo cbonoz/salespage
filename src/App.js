@@ -55,9 +55,10 @@ function App() {
   }, [])
 
   const navigate = useNavigate();
-  const path = window.location.pathname;
+  const path = window.location.href;
 
-  const isCheckout = path.startsWith("/page");
+  const isCheckout = path.indexOf("/page/") !== -1;
+  console.log('checkout', path, isCheckout)
 
   return (
     <div className="App">
@@ -106,8 +107,11 @@ function App() {
             <Routes>
               <Route path="/" element={<Home account={account} />} />
               <Route path="/page/:pageId" element={<Salespage logout={logout} login={login} provider={provider} account={account} />} />
+              <Route path="/#/page/:pageId" element={<Salespage logout={logout} login={login} provider={provider} account={account} />} />
               <Route path="/create" element={<CreateSalespage provider={provider} account={account}/>} />
+              <Route path="/#/create" element={<CreateSalespage provider={provider} account={account}/>} />
               <Route path="/history" element={<History />} />
+              <Route path="/#/history" element={<History />} />
             </Routes>
           </div>
         </Content>
