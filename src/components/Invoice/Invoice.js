@@ -29,7 +29,7 @@ function Invoice({
   const [rates, setRates] = useState()
 
   const total = useMemo(() => items 
-    .map((item) => item.usd * (item.quantity || 1))
+    .map((item) => (item.usd || 0) * (item.quantity || 1))
     .reduce(function (a, b) {
       return a + b;
     }, 0), [items])
