@@ -2,7 +2,7 @@
 <br/>
 <br/>
 <p align='center'>
-    <img src='./img/logo.png' width=400/>
+    <img src='https://i.ibb.co/FhjJ8DR/logo.png' width=400/>
 </p>
 <br/>
 
@@ -16,7 +16,7 @@ Every purchase gets emitted as a smart contract event and transactions are gener
 
 Live demo: <a href="https://salespage-ekhr49.spheron.app/" target="_blank">here</a>
 
-<b>Note must be connected to Mumbai network for the demo url.</b>
+<b>Note must be connected to Mumbai network if using default build configuration.</b>
 
 Video: <a href="https://youtu.be/DJ0-LxWRJ_U" target="_blank">Demo video</a>
 
