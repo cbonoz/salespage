@@ -1,11 +1,9 @@
 import axios from "axios"
 
-// {
-//     "BTC": 0.05556,
-//     "USD": 1159.16,
-//     "EUR": 1138.07
-// }
+
+// Example reply:
+// {"BTC":0.0000417,"ETH":0.0005293,"SOL":0.02293,"MATIC":1.06}
 export function getRates() {
-    const url = 'https://min-api.cryptocompare.com/data/price?fsym=USD&tsyms=BTC,ETH,EUR,MATIC'
+    const url = 'https://min-api.cryptocompare.com/data/price?fsym=USD&tsyms=BTC,ETH,SOL,MATIC'
     return axios.get(url)
 }

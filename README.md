@@ -8,7 +8,7 @@
 
 ## Salespage 
 
-A Point of Sale platform built on Polygon and IPFS.
+A Point of Sale platform built on Polygon and web3 storage.
 
 Inspired by platforms such as Square, Clover, and Toast - Salespage creates a Point of Sale (POS) management platform built on Polygon smart contracts to enable merchants of any size to create their own in-store purchase pages.
 
